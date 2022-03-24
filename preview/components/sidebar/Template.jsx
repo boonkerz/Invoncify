@@ -14,6 +14,7 @@ const Template = function({ t, template, handleInputChange, UILang }) {
       <select name="template" value={template} onChange={handleInputChange}>
         <option value="minimal">Minimal</option>
         <option value="business">Business</option>
+        <option value="tp">TP</option>
         <option value="businessQuote">Business Quote</option>
       </select>
     </Section>

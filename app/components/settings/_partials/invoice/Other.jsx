@@ -47,6 +47,7 @@ const Other = function ({
         <Field>
           <label className="itemLabel">{t('settings:fields:template')}</label>
           <select name="template" value={template} onChange={handleInputChange}>
+            <option value="tp">TP</option>
             <option value="minimal">Minimal</option>
             <option value="business">Business</option>
             <option value="businessQuote">Business Quote</option>

@@ -59,7 +59,7 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 
 // Component
-const TP = function (props) {
+const Business = function (props) {
   const { configs } = props;
   return (
     <Invoice baseFontSize={setBaseFontSize(configs.fontSize)}>
@@ -71,10 +71,10 @@ const TP = function (props) {
   );
 };
 
-TP.propTypes = {
+Business.propTypes = {
   invoice: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
   configs: PropTypes.object.isRequired,
 };
 
-export default TP;
+export default Business;
