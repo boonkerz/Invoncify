@@ -46,7 +46,7 @@ class Profile extends Component {
 
   render() {
     const { t } = this.props;
-    const { logo, fullname, company, address, email, phone, website } =
+    const { logo, fullname, company, companySub, address, email, phone, website } =
       this.state;
     return (
       <div>
@@ -72,6 +72,16 @@ class Profile extends Component {
               name="company"
               type="text"
               value={company}
+              onChange={this.handleInputChange}
+            />
+          </div>
+
+          <div className="pageItem col-md-6">
+            <label className="itemLabel">{t('common:fields:companySub')}</label>
+            <input
+              name="companySub"
+              type="text"
+              value={companySub}
               onChange={this.handleInputChange}
             />
           </div>

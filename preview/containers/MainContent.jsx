@@ -65,6 +65,7 @@ class MainContent extends Component {
   }
 
   render() {
+    console.log(this.props);
     const { t, invoice } = this.props;
     return (
       <Wrapper>

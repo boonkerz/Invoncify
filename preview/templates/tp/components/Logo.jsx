@@ -43,7 +43,7 @@ const Logo = function({ profile, configs }) {
       <Header 
         accentColor={accentColor}
         customAccentColor={customAccentColor}>{profile.company}</Header>
-      <SubHeader>{profile.fullname}</SubHeader>
+      <SubHeader>{profile.companySub}</SubHeader>
     </Wrapper>
   ) : null;
 }

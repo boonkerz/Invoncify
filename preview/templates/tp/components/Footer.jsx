@@ -3,36 +3,51 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
-const InvoiceFooter = styled.div`
-  flex: none;
-  h4 {
-    padding-bottom: 0.83333em;
-    border-bottom: 4px solid #efefd1;
-  }
+const Wrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+`;
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: auto;
   ${props =>
-    props.customAccentColor &&
+    props.left &&
     `
-    h4 { border-bottom: 4px solid ${props.accentColor}; }
+    align-items: flex-start;
+  `} ${props =>
+      props.right &&
+      `
+    align-items: flex-end;
   `};
 `;
 
 // Component
-const Footer = function({ t, invoice, configs }) {
-  const { language, accentColor, customAccentColor  } = configs;
-  return invoice.note ? (
-    <InvoiceFooter
-      accentColor={accentColor}
-      customAccentColor={customAccentColor}
-    >
-      <h4>{ t('preview:common:notice', {lng: language}) }</h4>
-      <p>{invoice.note}</p>
-    </InvoiceFooter>
-  ) : null;
+const Footer = function({ t, invoice, profile, configs }) {
+  const currentLanguage = configs.language;
+  const { tax, recipient } = invoice;
+  return (
+    <Wrapper>
+      <Column left>
+        <p>{profile.fullname}</p>
+        <p>{profile.address}</p>
+        <p>{profile.email}</p>
+        <p>{profile.phone}</p>
+      </Column>
+      <Column right>
+        { tax && <p>Tax ID: { tax.tin }</p> }
+        { configs.payment && configs.payment.details &&  configs.payment.details.split('\n').map((item, i) => <p key={i}>{item}</p>) }
+      </Column>
+    </Wrapper>
+  );
 }
 
 Footer.propTypes = {
   configs: PropTypes.object.isRequired,
   invoice: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
 };
 
