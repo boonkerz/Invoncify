@@ -27,7 +27,7 @@ const Column = styled.div`
 // Component
 const Footer = function({ t, invoice, profile, configs }) {
   const currentLanguage = configs.language;
-  const { tax, recipient } = invoice;
+  const { tax, recipient, payment } = invoice;
   return (
     <Wrapper>
       <Column left>
@@ -38,7 +38,7 @@ const Footer = function({ t, invoice, profile, configs }) {
       </Column>
       <Column right>
         { tax && <p>Tax ID: { tax.tin }</p> }
-        { configs.payment && configs.payment.details &&  configs.payment.details.split('\n').map((item, i) => <p key={i}>{item}</p>) }
+        { payment && payment.details &&  payment.details.split('\n').map((item, i) => <p key={i}>{item}</p>) }
       </Column>
     </Wrapper>
   );
